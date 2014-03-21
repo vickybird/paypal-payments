@@ -1,0 +1,14 @@
+{
+  "name": "passport-reg",
+  "version": "0.1.0",
+  "description": "Registration and login using Passport.",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "1.1.5"
+  },
+  "engines": {
+    "node": "0.10.25"
+  }
+}

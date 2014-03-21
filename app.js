@@ -16,5 +16,14 @@ app.get('/register', function(req, res) {
   res.render('register.jade');
 });
 
+app.post('/register', function(req, res) {
+  res.redirect('/account');
+});
+
+app.get('/account', function(req, res) {
+  res.render('account.jade',
+    { user: '' });
+});
+
 app.listen(port);
 console.log('Listening on port %d', port);

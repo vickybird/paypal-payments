@@ -4,6 +4,8 @@ html
     title Register
   body
     h1 Register
+    if userExists
+      p Username #{username} already exists.
     form(action='/register',method='post')
       label(for='username') Username
       input(type='text',name='username')

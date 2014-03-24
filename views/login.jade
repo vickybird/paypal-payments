@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title Login
+  body
+    h1 Login
+    form(action='/login',method='post')
+      label(for='username') Username
+      input(name='username',type='text')
+      label(for='password') Password
+      input(name='password',type='password')
+      input(type='submit',value='Login')

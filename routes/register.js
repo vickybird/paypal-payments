@@ -6,10 +6,12 @@ module.exports = function(app) {
   });
 
   app.post('/register', function(req, res) {
-    Account.find({ name: /req.body.username/ },
+    Account.find({ username: req.body.username },
       function(err, accounts) {
         if (err) { throw err; }
-        if (accounts) {
+        console.log(accounts);
+        console.log(accounts.length);
+        if (accounts.length !== 0) {
           console.log('User already exists');
           res.render('register.jade', {
             userExists: true,

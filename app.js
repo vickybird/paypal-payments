@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
+var passport = require('passport');
 var port = process.env.PORT || 3000;
 
 // Db setup
@@ -18,8 +19,10 @@ var app = express();
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.urlencoded());
+app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.logger('dev'));
+app.use(passport.initialize());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 

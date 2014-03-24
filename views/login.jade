@@ -4,6 +4,8 @@ html
     title Login
   body
     h1 Login
+    if message
+      p #{message}
     form(action='/login',method='post')
       label(for='username') Username
       input(name='username',type='text')

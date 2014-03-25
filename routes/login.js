@@ -39,4 +39,10 @@ module.exports = function(app) {
       }
     })(req, res);
   });
+
+  app.get('/logout', function(req, res) {
+    userManager.logout(req, res, function() {
+      res.redirect('/login');
+    });
+  });
 };

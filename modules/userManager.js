@@ -14,8 +14,9 @@ exports.login = function(req, res, user, next) {
   });
 };
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res, next) {
   res.clearCookie('user');
+  next();
 };
 
 exports.ensureAuthenticated = function(req, res, next) {

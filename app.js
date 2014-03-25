@@ -20,9 +20,11 @@ app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.urlencoded());
 app.use(express.bodyParser());
-app.use(express.cookieParser());
+app.use(express.cookieParser('cookme'));
 app.use(express.logger('dev'));
+app.use(express.session({ secret: 'secret' }));
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 

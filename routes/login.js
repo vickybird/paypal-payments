@@ -1,13 +1,13 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Account = require('models/account.js');
+var userManager = require('modules/userManager.js');
 
-passport.serializeUser(function(user, done) { done(null, user); });
-passport.deserializeUser(function(obj, done) { done(null, obj); });
+passport.serializeUser(userManager.serializeUser);
+passport.deserializeUser(userManager.deserializeUser);
 
 module.exports = function(app) {
   app.use(passport.initialize());
-
   passport.use(new LocalStrategy(
     function(username, password, done) {
       Account.find({ username: username }, function(err, accounts) {
@@ -29,7 +29,11 @@ module.exports = function(app) {
     passport.authenticate('local', function(err, user, info) {
       if (err) { throw err; }
       if (user) {
-        res.redirect('/account');
+        userManager.login(req, res, user, function() {
+          var redirectTo = req.cookies.redirectTo ? req.cookies.redirectTo : '/account';
+          res.clearCookie('redirectTo');
+          res.redirect(redirectTo);
+        });
       } else {
         res.render('login.jade', { message: info.message });
       }

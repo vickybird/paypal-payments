@@ -22,7 +22,6 @@ exports.logout = function(req, res, next) {
 
 exports.ensureAuthenticated = function(req, res, next) {
   res.cookie('redirectTo', req.path);
-  console.log(verifyCookie(req));
   if (verifyCookie(req)) {
     if (!req.isAuthenticated()) {
       Accounts.find(

@@ -8,9 +8,9 @@ html
       p= message
     form(action='/register',method='post')
       label(for='username') Username
-      input(type='text',name='username')
+      input(id='username',type='text')
       label(for='password') Password
-      input(type='password',name='password')
+      input(id='password',type='password')
       label(for='password2') Re-enter Password
-      input(type='password',name='password2')
+      input(id='password2',type='password')
       input(type='submit')

@@ -8,7 +8,7 @@ html
       p #{message}
     form(action='/login',method='post')
       label(for='username') Username
-      input(id='username',type='text')
+      input(id='username',name='username',type='text')
       label(for='password') Password
-      input(id='password',type='password')
+      input(id='password',name='password',type='password')
       input(type='submit',value='Login')

@@ -52,7 +52,7 @@ function login(req, user, callback) {
   });
 }
 
-function verifyCookie(req, username) {
+function verifyCookie(req) {
   if (req.signedCookies.user) { return true; }
   return false;
 }

@@ -54,7 +54,7 @@ exports.isAuthenticated = function(req, successCallback, failureCallback) {
 //
 
 function login(req, user, callback) {
-  req.login(user, {}, function(err) {
+  req.logIn(user, function(err) {
     if (err) { throw err; }
     callback();
   });

@@ -3,23 +3,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var Account = require('models/account.js');
 var userManager = require('modules/userManager.js');
 
-passport.serializeUser(userManager.serializeUser);
-passport.deserializeUser(userManager.deserializeUser);
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 module.exports = function(app) {
   app.use(passport.initialize());
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
-      Account.find({ username: username }, function(err, accounts) {
-        if (err) { throw err; }
-        if (accounts.length === 0 ||
-          accounts[0].password !== password) {
-          return done(null, false, { message: 'Incorrect username or password.' });
-        }
-        return done(null, accounts[0]);
-      });
-    })
-  );
+  passport.use(Account.createStrategy());
 
   app.get('/login', function(req, res) {
     userManager.isAuthenticated(

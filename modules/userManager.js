@@ -41,6 +41,14 @@ exports.ensureAuthenticated = function(req, res, next) {
   }
 };
 
+exports.isAuthenticated = function(req, successCallback, failureCallback) {
+  if (verifyCookie(req)) {
+    successCallback();
+  } else {
+    failureCallback();
+  }
+};
+
 // 
 // Private Functions
 //

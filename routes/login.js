@@ -22,7 +22,10 @@ module.exports = function(app) {
   );
 
   app.get('/login', function(req, res) {
-    res.render('login.jade');
+    userManager.isAuthenticated(
+      req,
+      function() { res.redirect('/account'); },
+      function() { res.render('login.jade'); });
   });
 
   app.post('/login', function(req, res) {

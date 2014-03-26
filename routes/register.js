@@ -14,8 +14,11 @@ module.exports = function(app) {
       }),
       req.body.password,
       function(err, account) {
-        if (err) { throw err; }
-        res.redirect('/account');
+        if (err) {
+          res.render('register.jade', { message: err.message });
+        } else {
+          res.redirect('/account');
+        }
       });
   });
 };

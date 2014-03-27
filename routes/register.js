@@ -7,6 +7,9 @@ module.exports = function(app) {
   });
 
   app.post('/register', function(req, res) {
+    if (req.body.password !== req.body.password2) {
+      res.render('register.jade', { message: 'Given passwords are different, please re-enter and try again.' });
+    } else {
     Account.register(
       new Account({
         username: req.body.username,
@@ -23,5 +26,6 @@ module.exports = function(app) {
           });
         }
       });
+    }
   });
 };

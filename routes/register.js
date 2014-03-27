@@ -10,7 +10,7 @@ module.exports = function(app) {
     Account.register(
       new Account({
         username: req.body.username,
-        firstName: req.body.firstname,
+        firstName: req.body.firstName,
         surname: req.body.surname
       }),
       req.body.password,

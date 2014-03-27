@@ -1,4 +1,5 @@
 var Account = require('models/account.js');
+var userManager = require('modules/userManager.js');
 
 module.exports = function(app) {
   app.get('/register', function(req, res) {
@@ -17,7 +18,9 @@ module.exports = function(app) {
         if (err) {
           res.render('register.jade', { message: err.message });
         } else {
-          res.redirect('/account');
+          userManager.login(req, res, account, function() {
+            res.redirect('/account');
+          });
         }
       });
   });

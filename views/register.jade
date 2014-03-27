@@ -7,6 +7,10 @@ html
     if message
       p= message
     form(action='/register',method='post')
+      label(for='firstname') First Name
+      input(id='firstname',name='firstname',type='text')
+      label(for='surname') Surname
+      input(id='surname',name='surname',type='text')
       label(for='username') Username
       input(id='username',name='username',type='text')
       label(for='password') Password

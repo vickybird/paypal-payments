@@ -9,8 +9,8 @@ module.exports = function(app) {
     Account.register(
       new Account({
         username: req.body.username,
-        firstName: '',
-        surname: ''
+        firstName: req.body.firstname,
+        surname: req.body.surname
       }),
       req.body.password,
       function(err, account) {

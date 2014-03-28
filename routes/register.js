@@ -14,7 +14,8 @@ module.exports = function(app) {
       new Account({
         username: req.body.username,
         firstName: req.body.firstName,
-        surname: req.body.surname
+        surname: req.body.surname,
+        email: req.body.email
       }),
       req.body.password,
       function(err, account) {

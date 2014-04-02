@@ -37,6 +37,18 @@ exports.checkout = function(errorCallback, successCallback) {
     });
 };
 
+exports.getPaymentDetails = function(token, errorCallback, successCallback) {
+  paypal.get_details(
+    { token: token },
+    function(err, data) {
+      if(err) {
+        errorCallback(err);
+      } else {
+        successCallback(data);
+      }
+    });
+};
+
 exports.completePurchase = function(token, payerId, errorCallback, successCallback) {
   var plan = paymentPlan;
   plan.TOKEN = token;

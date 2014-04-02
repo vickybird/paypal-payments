@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Confirm Payment
+  body
+    form
+      p Payment details:
+      table
+        tr
+          th Item Price
+          td= itemPrice
+        tr
+          th Shipping Price
+          td= shippingPrice
+        tr
+          th Total
+          td= totalPrice
+      p For item:
+      ul
+        li #{itemName}
+      -var confirmAddress = '/buy/confirm?token=' + token + '&payerid=' + payerId;
+      input(type='submit',formaction='/buy/cancel',formmethod='post',value='Cancel')
+      input(type='submit',formaction=confirmAddress,formmethod='post',value='Confirm')

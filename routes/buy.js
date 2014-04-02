@@ -18,9 +18,29 @@ module.exports = function(app) {
   });
 
   app.get('/buy/confirm', userManager.ensureAuthenticated, function(req, res) {
+    payments.getPaymentDetails(
+      req.query.token,
+      function(err) {
+        res.render('paymentError.jade', { error: err });
+      },
+      function(data) {
+        console.log(data);
+        res.render('confirmPayment.jade',
+          {
+            token: req.query.token,
+            payerId: req.query.PayerID,
+            itemPrice: data.ITEMAMT,
+            shipping: data.SHIPPINGAMT,
+            totalPrice: data.AMT,
+            itemName: data.PAYMENTREQUEST_0_DESC
+          });
+      });
+  });
+
+  app.post('/buy/confirm', userManager.ensureAuthenticated, function(req, res) {
     payments.completePurchase(
       req.query.token,
-      req.query.PayerID,
+      req.query.payerid,
       function(err) {
         res.render('paymentError.jade', { error: err });
       },

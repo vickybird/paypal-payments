@@ -3,7 +3,7 @@ passport-reg
 
 Registration and login with Passport.
 
-# Environment Varables
+## Environment Variables
 
 Required:
 

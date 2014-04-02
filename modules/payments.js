@@ -10,9 +10,10 @@ var paypal = new PayPalEC(
     version: '95.0'
   });
 
+var returnDomain = process.env.DOMAIN + ':' + process.env.PORT;
 var paymentPlan = {
-  returnUrl : 'http://localhost:3000/buy/confirm',
-  cancelUrl : 'http://localhost:3000/buy/cancel',
+  returnUrl : 'http://' + returnDomain + '/buy/confirm',
+  cancelUrl : 'http://' + returnDomain + '/buy/cancel',
   SOLUTIONTYPE : 'sole',
   PAYMENTREQUEST_0_AMT : '10.00',
   PAYMENTREQUEST_0_DESC : 'One-time Purchase',

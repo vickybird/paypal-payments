@@ -19,5 +19,5 @@ html
       ul
         li #{itemName}
       -var confirmAddress = '/buy/confirm?token=' + token + '&payerid=' + payerId;
-      input(type='submit',formaction='/buy/cancel',formmethod='post',value='Cancel')
+      input(type='submit',formaction='/buy/cancel',formmethod='get',value='Cancel')
       input(type='submit',formaction=confirmAddress,formmethod='post',value='Confirm')

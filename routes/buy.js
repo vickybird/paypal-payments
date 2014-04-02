@@ -74,13 +74,17 @@ module.exports = function(app) {
   });
 
   app.get('/buy/cancel', userManager.ensureAuthenticated, function(req, res) {
-    var transactionId = req.signedCookies.transactionId;
-    transactions.updateTransaction(
-      transactionId,
-      { paymentStatus: 'Cancelled' },
-      function(transaction) {
-        res.clearCookie('transactionId');
-        res.render('paymentCancelled.jade');
-      });
+    if (req.signedCookies && req.signedCookies.transactionId) {
+      var transactionId = req.signedCookies.transactionId;
+      transactions.updateTransaction(
+        transactionId,
+        { paymentStatus: 'Cancelled' },
+        function(transaction) {
+          res.clearCookie('transactionId');
+          res.render('paymentCancelled.jade');
+        });
+    } else {
+      res.render('paymentCancelled.jade');
+    }
   });
 };

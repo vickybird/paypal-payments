@@ -30,5 +30,6 @@ module.exports = function(app) {
   });
 
   app.get('/buy/cancel', userManager.ensureAuthenticated, function(req, res) {
+    res.render('paymentCancelled.jade');
   });
 };

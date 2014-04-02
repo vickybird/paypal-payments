@@ -24,7 +24,6 @@ module.exports = function(app) {
         res.render('paymentError.jade', { error: err });
       },
       function(data) {
-        console.log(data);
         res.render('confirmPayment.jade',
           {
             token: req.query.token,

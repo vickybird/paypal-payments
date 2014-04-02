@@ -13,7 +13,6 @@ module.exports = function(app) {
 
   app.post('/buy/thingy', userManager.ensureAuthenticated, function(req, res) {
     payments.checkout(
-      req.user,
       'Thingy',
       function(err) {
         res.render('paymentError.jade', { error: err });

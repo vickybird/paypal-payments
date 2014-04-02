@@ -25,7 +25,7 @@ var paymentPlan = {
   L_PAYMENTREQUEST_0_QTY0 : '1'
 };
 
-exports.checkout = function(user, item, errorCallback, successCallback) {
+exports.checkout = function(item, errorCallback, successCallback) {
   var plan = paymentPlan;
   plan.PAYMENTREQUEST_0_DESC = item;
   plan.L_PAYMENTREQUEST_0_NAME0 = item;

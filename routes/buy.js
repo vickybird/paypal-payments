@@ -6,8 +6,13 @@ module.exports = function(app) {
     res.render('buyathing.jade');
   });
 
+  app.get('/buy/thingy', userManager.ensureAuthenticated, function(req,res) {
+    res.render('checkout.jade', { item: 'thingy', itemDisplayName: 'a Thingy' });
+  });
+
   app.post('/buy/thingy', userManager.ensureAuthenticated, function(req, res) {
     payments.checkout(
+      'Thingy',
       function(err) {
         res.render('paymentError.jade', { error: err });
       },

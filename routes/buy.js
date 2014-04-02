@@ -12,6 +12,8 @@ module.exports = function(app) {
 
   app.post('/buy/thingy', userManager.ensureAuthenticated, function(req, res) {
     payments.checkout(
+      res,
+      req.user,
       'Thingy',
       function(err) {
         res.render('paymentError.jade', { error: err });
@@ -24,6 +26,7 @@ module.exports = function(app) {
 
   app.get('/buy/confirm', userManager.ensureAuthenticated, function(req, res) {
     payments.getPaymentDetails(
+      req,
       req.query.token,
       function(err) {
         res.render('paymentError.jade', { error: err });
@@ -43,6 +46,7 @@ module.exports = function(app) {
 
   app.post('/buy/confirm', userManager.ensureAuthenticated, function(req, res) {
     payments.completePurchase(
+      req,
       req.query.token,
       req.query.payerid,
       function(err) {

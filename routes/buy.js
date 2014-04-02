@@ -74,6 +74,13 @@ module.exports = function(app) {
   });
 
   app.get('/buy/cancel', userManager.ensureAuthenticated, function(req, res) {
-    res.render('paymentCancelled.jade');
+    var transactionId = req.signedCookies.transactionId;
+    transactions.updateTransaction(
+      transactionId,
+      { paymentStatus: 'Cancelled' },
+      function(transaction) {
+        res.clearCookie('transactionId');
+        res.render('paymentCancelled.jade');
+      });
   });
 };

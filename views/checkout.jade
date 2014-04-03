@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Checkout
+  body
+    form
+      p You have selected to buy #{itemDisplayName}.
+      input(type='submit',formaction='/buy/cancel',formmethod='get',value='Cancel')
+      -var checkoutAddress = '/buy/' + item;
+      input(type='submit',formaction=checkoutAddress,formmethod='post',value='Complete transaction with PayPal')

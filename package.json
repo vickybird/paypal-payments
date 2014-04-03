@@ -1,7 +1,7 @@
 {
-  "name": "passport-reg",
+  "name": "paypal-payments",
   "version": "0.1.0",
-  "description": "Registration and login using Passport.",
+  "description": "Making payments with PayPal Express Checkout.",
   "main": "app.js",
   "private": true,
   "dependencies": {

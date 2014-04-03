@@ -1,7 +1,7 @@
-passport-reg
-============
+paypal-payments
+===============
 
-Registration and login with Passport.
+Making payments with PayPal Express Checkout. Based on passport-reg repo.
 
 ## Environment Variables
 

@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Register
+  body
+    h1 Register
+    if message
+      p= message
+    form(action='/register',method='post')
+      label(for='firstName') First Name
+      input(id='firstName',name='firstName',type='text')
+      label(for='surname') Surname
+      input(id='surname',name='surname',type='text')
+      label(for='email') Email
+      input(id='email',name='email',type='text')
+      label(for='username') Username
+      input(id='username',name='username',type='text')
+      label(for='password') Password
+      input(id='password',name='password',type='password')
+      label(for='password2') Re-enter Password
+      input(id='password2',name='password2',type='password')
+      input(type='submit')
+    p Already registered? #[a(href='/login') Login here.]

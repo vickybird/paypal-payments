@@ -1,0 +1,19 @@
+{
+  "name": "passport-reg",
+  "version": "0.1.0",
+  "description": "Registration and login using Passport.",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "1.1.5",
+    "mongodb": "~1.3.23",
+    "mongoose": "~3.8.8",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "passport-local-mongoose": "~0.3.0"
+  },
+  "engines": {
+    "node": "0.10.25"
+  }
+}

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Login
+  body
+    h1 Login
+    if message
+      p #{message}
+    form(action='/login',method='post')
+      label(for='username') Username
+      input(id='username',name='username',type='text')
+      label(for='password') Password
+      input(id='password',name='password',type='password')
+      input(type='submit',value='Login')
+    p Need an account? #[a(href='/register') Register here.]
